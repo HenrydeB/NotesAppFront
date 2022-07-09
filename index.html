@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- Vue script tag -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css" integrity="sha512-xiunq9hpKsIcz42zt0o2vCo34xV0j6Ny8hgEylN3XBglZDtTZ2nwnqF/Z/TTCc18sGdvCjbFInNd++6q3J0N6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Our custom code -->
+        <script src="app.js" defer></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="app">
+            <h1 id="title">HenryD<span>BLOGS</span> </h1>
+            <div id="nologin" v-if="!loggedin">
+                <div id="loginform">
+                    <form v-on:submit.prevent="handleLogin">
+                        <fieldset><legend>LOGIN</legend>
+                        <input type="text" placeholder="username" v-model="loginUserName">
+                        <input type = "password" placeholder = "password" v-model="loginPW">
+                        <input type = "submit" value = "login">
+                        </fieldset>
+                    </form>
+                    <form v-on:submit.prevent="handleSignup">
+                        <fieldset><legend>Create User</legend>
+                        <input type="text" placeholder="username" v-model="createUserName">
+                        <input type = "password" placeholder = "password" v-model="createPW">
+                        <input type = "submit" value = "create">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div id="login" v-if="loggedin">
+                <div id="forms">
+                    <article>
+                        <h1>New Note</h1>
+                        <input type="text" v-model="newNote">
+                        <button v-on:click.prevent="createNote">Create Note</button>
+                    </article>
+                    <article>
+                        <h1>Update Note</h1>
+                        <input type="text" v-model="updateNote">
+                        <button v-on:click.prevent="editNote" v-bind:id="editID">Update Note</button>
+                    </article>
+                </div>
+                <div id="notes">
+                    <div class="note" v-for="note of notes">
+                        <h1>{{note.message}}</h1>
+                        <button v-bind:id="note.id" v-on:click="deleteNote">delete</button>
+                        <button v-bind:id="note.id"v-on:click="editSelect">update</button>
+                    </div>
+                </div>
+                <button id="logout" v-on:click="handleLogout">Logout</button>
+            </div>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+#title {
+    text-align: center;
+    margin: 50px auto;
+
+}
+#title span {
+    color: #08b365;
+    text-decoration: underline;
+}
+
+#loginform {
+    display: flex;
+    width: 60%;
+    margin: 10px auto;
+}
+
+#forms{
+    width: 60%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+}
+#notes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 10px auto;
+}
+
+#notes div {
+    margin: 15px;
+    max-width: 300px;
+    padding: 10px;
+    border: 2 solid ;
+}
+
+#logout {
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+}
